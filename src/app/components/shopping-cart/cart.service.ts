@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   cart: any[] = [];
-  cart$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(this.cart);
 
-  constructor() {}
+  constructor() { }
 
   addToCart(product: any): void {
     const existingProductIndex = this.cart.findIndex(
@@ -19,7 +17,6 @@ export class CartService {
     } else {
       this.cart.push({ ...product, quantity: 1 });
     }
-    this.cart$.next(this.cart);
-    //console.log(JSON.stringify(this.cart));
+    console.log(JSON.stringify(this.cart));
   }
 }

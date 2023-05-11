@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { CartService } from './cart.service';
 
 @Component({
@@ -8,15 +8,23 @@ import { CartService } from './cart.service';
 })
 export class ShoppingCartComponent implements OnInit {
   @Input() cart: any[] = [];
-  total: number = 0;
+  @Output() decreaseFromCart: EventEmitter<any> = new EventEmitter<any>();
+  @Output() increaseFromCart: EventEmitter<any> = new EventEmitter<any>();
+  @Output() removeFromCart: EventEmitter<any> = new EventEmitter<any>();
+  @Input() handlePlaceOrder: any;
+  @Input() total: any;
+
 
   constructor(private cartService: CartService) {
     this.cart = [];
   }
 
   ngOnInit(): void {
-    this.cartService.cart$.subscribe((cart) => {
-      console.log("el de this"+JSON.stringify(this.cart));
+    console.log("antes de nada cart: "+JSON.stringify(this.cart));
+  }
+
+  /*
+      this.cartService.cart$.subscribe((cart) => {
       this.cart = cart;
       this.total = this.cart.reduce(
         (total: number, product: { price: number; quantity: number }) =>
@@ -24,46 +32,21 @@ export class ShoppingCartComponent implements OnInit {
         0
       );
     });
+  */
+
+  handlePlaceOrderItem() {
+    this.handlePlaceOrder();
   }
 
-  handlePlaceOrder() {
-    this.cart = [];
+  decreaseFromCartItem(product: any): void {
+    this.decreaseFromCart.emit(product);
   }
 
-  decreaseFromCart(product: any): void {
-    product.quantity -= 1;
-    product.stock += 1;
-
-    if (product.quantity === 0) {
-      this.removeFromCart(product);
-    } else {
-      this.total = this.cart.reduce(
-        (total: number, product: { price: number; quantity: number }) =>
-          total + product.price * product.quantity,
-        0
-      );
-    }
+  increaseFromCartItem(product: any): void {
+    this.increaseFromCart.emit(product);
   }
 
-  increaseFromCart(product: any): void {
-    console.log(JSON.stringify(this.cartService.cart));
-    product.quantity += 1;
-    product.stock -= 1;
-    this.total = this.cart.reduce(
-      (total: number, product: { price: number; quantity: number }) =>
-        total + product.price * product.quantity,
-      0
-    );
-  }
-
-  removeFromCart(product: any): void {
-    console.log(JSON.stringify(this.cart));
-    this.cart = this.cart.filter((item: { id: any }) => item.id !== product.id);
-    product.stock += product.quantity;
-    this.total = this.cart.reduce(
-      (total: number, product: { price: number; quantity: number }) =>
-        total + product.price * product.quantity,
-      0
-    );
+  removeFromCartItem(product: any): void {
+    this.removeFromCart.emit(product);
   }
 }

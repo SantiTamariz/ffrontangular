@@ -5,8 +5,8 @@
         <div class="card-body">
             <ul class="list-group cart-list">
                 <div *ngFor="let product of cart" class="card mb-2">
-                    <app-shopping-card [product]="product" [removeFromCart]="removeFromCart"
-                        [decreaseFromCart]="decreaseFromCart" [increaseFromCart]="increaseFromCart"></app-shopping-card>
+                    <app-shopping-card [product]="product" (removeFromCart)="removeFromCartItem($event)"
+                    (decreaseFromCart)="decreaseFromCartItem($event)" (increaseFromCart)="increaseFromCartItem($event)"></app-shopping-card>
 
                 </div>
             </ul>

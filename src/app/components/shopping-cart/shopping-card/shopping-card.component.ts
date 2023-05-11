@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-shopping-card',
@@ -8,20 +8,20 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ShoppingCardComponent implements OnInit {
 
   @Input() product: any;
-  @Input() removeFromCart: any;
-  @Input() decreaseFromCart: any;
-  @Input() increaseFromCart: any;
+  @Output() decreaseFromCart: EventEmitter<any> = new EventEmitter<any>();
+  @Output() increaseFromCart: EventEmitter<any> = new EventEmitter<any>();
+  @Output() removeFromCart: EventEmitter<any> = new EventEmitter<any>();
 
   removeFromCartItem() {
-    this.removeFromCart(this.product);
+    this.removeFromCart.emit(this.product);
   }
 
   decreaseFromCartItem() {
-    this.decreaseFromCart(this.product);
+    this.decreaseFromCart.emit(this.product);
   }
 
   increaseFromCartItem() {
-    this.increaseFromCart(this.product);
+    this.increaseFromCart.emit(this.product);
   }
 
   constructor() { }

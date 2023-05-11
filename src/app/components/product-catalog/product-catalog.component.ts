@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import data from '../../../assets/data.json';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-product-catalog',
@@ -7,17 +6,24 @@ import data from '../../../assets/data.json';
   styleUrls: ['./product-catalog.component.scss']
 })
 export class ProductCatalogComponent implements OnInit {
-  appData = data;
+  @Input() products: any[] = [];
+  @Input() categories: any[] = [];
+  @Output() addToCart: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {}
 
   ngOnInit(): void {
-    this.appData.categories.forEach((category) => {
+    console.log("categorias: "+JSON.stringify(this.categories));
+    this.categories.forEach((category) => {
       category.visible = false; // Initialize the visibility state for each category
     });
   }
 
   toggleCategory(category: any): void {
     category.visible = !category.visible; // Toggle the visibility state of the category
+  }
+
+  handleAddToCart(product: any){
+    this.addToCart.emit(product);
   }
 }

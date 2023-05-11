@@ -4,9 +4,10 @@
 <div class="container-fluid">
 
 
-<app-product-catalog>
+<app-product-catalog [categories]="categories" [products]="products" (addToCart)="addToCart($event)">
 </app-product-catalog>
-<app-shopping-cart [cart]="cart">
+<app-shopping-cart [cart]="cart" [total]="total" (removeFromCart)="removeFromCart($event)"
+(decreaseFromCart)="decreaseFromCart($event)" (increaseFromCart)="increaseFromCart($event)">
 
 </app-shopping-cart>
 </div>
