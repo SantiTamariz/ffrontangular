@@ -1,23 +1,24 @@
-<mat-card class="card">
-  <mat-card-header class="card-header">
-    <mat-card-title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">
       Categories
-    </mat-card-title>
-  </mat-card-header>
-
-  <mat-card-content *ngIf="categories" class="card-body">
-    <mat-list *ngFor="let category of categories" class="product-list list-group category-list">
-      <h3 (click)="toggleCategory(category)" class="category-link">{{ category.name }}</h3>
-      <div *ngIf="category.visible">
-        <div *ngFor="let product of products">
-          <div *ngIf="product.category === category.id">
-            <div class="card mb-2">
-            <app-product-card [product]="product" (addToCart)="handleAddToCart($event)"></app-product-card>
-        </div>
+    </div>
+  </div>
+  <div *ngIf="categories" class="card-body">
+    <ul *ngFor="let category of categories" class="list-group category-list">
+      <li class="list-group-item">
+        <h3 (click)="toggleCategory(category)" class="category-link">{{ category.name }}</h3>
+        <div *ngIf="category.visible">
+          <div *ngFor="let product of products">
+            <div *ngIf="product.category === category.id">
+              <div class="card mb-2">
+                <app-product-card [product]="product" (addToCart)="handleAddToCart($event)"></app-product-card>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <!--<mat-divider></mat-divider>-->
-    </mat-list>
-  </mat-card-content>
-</mat-card>
+      </li>
+    </ul>
+  </div>
+</div>

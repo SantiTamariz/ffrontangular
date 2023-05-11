@@ -33,11 +33,11 @@
   }
   
   /* Style the shopping cart */
-  .card-header + .card-body {
+  .card-header+.card-body {
     font-size: 18px;
   }
   
-  .card-header + .card-body p {
+  .card-header+.card-body p {
     margin-bottom: 0;
   }
   
@@ -66,16 +66,15 @@
     flex-direction: column;
   }
   
-  .card-product {
+  .card-product{
     display: flex;
     flex-direction: row;
   }
   
-  .card-img {
+  .card-img{
     width: auto !important;
     display: flex;
     align-items: center;
-    margin-right: 5px;
   }
   
   .card-img img {
@@ -118,4 +117,3 @@
     transform: scale(1.3);
     width: 250px;
   }
-  

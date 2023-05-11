@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+
 <app-header>
   
 </app-header>
@@ -7,7 +9,7 @@
 <app-product-catalog [categories]="categories" [products]="products" (addToCart)="addToCart($event)">
 </app-product-catalog>
 <app-shopping-cart [cart]="cart" [total]="total" (removeFromCart)="removeFromCart($event)"
-(decreaseFromCart)="decreaseFromCart($event)" (increaseFromCart)="increaseFromCart($event)">
+(decreaseFromCart)="decreaseFromCart($event)" (increaseFromCart)="increaseFromCart($event)" (handlePlaceOrder)="handlePlaceOrder()">
 
 </app-shopping-cart>
 </div>

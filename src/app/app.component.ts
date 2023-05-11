@@ -23,6 +23,7 @@ export class AppComponent {
 
   decreaseFromCart(product: any): void {
     product.quantity -= 1;
+    product.stock++;
     const existingProductIndex = this.products.findIndex(
       (p) => p.id === product.id
     );
@@ -47,11 +48,13 @@ export class AppComponent {
     if (existingProductIndex >= 0) 
       this.products[existingProductIndex].stock--;
     product.quantity += 1;
+    product.stock -= 1;
     this.total = this.cart.reduce(
       (total: number, product: { price: number; quantity: number }) =>
         total + product.price * product.quantity,
       0
     );
+    console.log(product.stock);
   }
 
   removeFromCart(product: any): void {
@@ -70,6 +73,9 @@ export class AppComponent {
   }
 
   handlePlaceOrder() {
+    this.cart.forEach(element => {
+      this.removeFromCart(element);
+    });
     this.cart = [];
     this.total = 0;
   }
@@ -80,9 +86,9 @@ export class AppComponent {
     );
     if (existingProductIndex >= 0) {
       this.cart[existingProductIndex].quantity++;
+      this.cart[existingProductIndex].stock--;
     } else {
-      this.cart.push({ ...product, quantity: 1 });
-      
+      this.cart.push({ ...product, quantity: 1, stock:product.stock-1 });
     }
     product.stock--;
     this.total = this.cart.reduce(

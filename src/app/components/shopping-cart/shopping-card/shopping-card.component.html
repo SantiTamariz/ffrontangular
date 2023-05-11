@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
 <div class="card-product" [attr.data-code]="product.code">
     <div class="card-img">
       <img
@@ -13,7 +14,7 @@
         <p class="card-text">Code: {{ product.code }}</p>
         <p class="card-text">Price: ${{ product.price.toFixed(2) }}</p>
         <p class="card-text">Total price: ${{ (product.price * product.quantity).toFixed(2) }}</p>
-        <p class="card-text stock" [ngClass]="{ 'out-of-stock': product.stock === 0 }">
+        <p class="card-text">
           Quantity: {{ product.quantity }}
         </p>
         <button class="btn btn-primary" (click)="removeFromCartItem()">

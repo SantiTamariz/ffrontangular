@@ -11,7 +11,7 @@ export class ShoppingCartComponent implements OnInit {
   @Output() decreaseFromCart: EventEmitter<any> = new EventEmitter<any>();
   @Output() increaseFromCart: EventEmitter<any> = new EventEmitter<any>();
   @Output() removeFromCart: EventEmitter<any> = new EventEmitter<any>();
-  @Input() handlePlaceOrder: any;
+  @Output() handlePlaceOrder: EventEmitter<any> = new EventEmitter<any>();
   @Input() total: any;
 
 
@@ -23,19 +23,9 @@ export class ShoppingCartComponent implements OnInit {
     console.log("antes de nada cart: "+JSON.stringify(this.cart));
   }
 
-  /*
-      this.cartService.cart$.subscribe((cart) => {
-      this.cart = cart;
-      this.total = this.cart.reduce(
-        (total: number, product: { price: number; quantity: number }) =>
-          total + product.price * product.quantity,
-        0
-      );
-    });
-  */
-
   handlePlaceOrderItem() {
-    this.handlePlaceOrder();
+    console.log("llamar llama");
+    this.handlePlaceOrder.emit();
   }
 
   decreaseFromCartItem(product: any): void {
