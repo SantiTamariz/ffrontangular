@@ -1,0 +1,39 @@
+<div class="card-product" [attr.data-code]="product.code">
+    <div class="card-img">
+      <img
+        class="card-img-top"
+        [ngClass]="'product-img-' + product.code"
+        [src]="product.image"
+        [alt]="product.name"
+      />
+    </div>
+    <div class="card-body">
+      <div class="card-info">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">Code: {{ product.code }}</p>
+        <p class="card-text">Price: ${{ product.price.toFixed(2) }}</p>
+        <p class="card-text">Total price: ${{ (product.price * product.quantity).toFixed(2) }}</p>
+        <p class="card-text stock" [ngClass]="{ 'out-of-stock': product.stock === 0 }">
+          Quantity: {{ product.quantity }}
+        </p>
+        <button class="btn btn-primary" (click)="removeFromCartItem()">
+          Remove from Cart
+        </button>
+        <div class="button-plus-less">
+          <button
+            class="btn btn-primary"
+            (click)="increaseFromCartItem()"
+            [disabled]="product.stock === 0"
+            [ngClass]="{ 'out-of-stock': product.stock === 0 }"
+          >
+            +
+          </button>
+  
+          <button class="btn btn-primary" (click)="decreaseFromCartItem()">
+            -
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,23 @@
+<mat-card class="card">
+  <mat-card-header class="card-header">
+    <mat-card-title>
+      Categories
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content *ngIf="appData && appData.categories" class="card-body">
+    <mat-list *ngFor="let category of appData.categories" class="product-list list-group category-list">
+      <h3 (click)="toggleCategory(category)" class="category-link">{{ category.name }}</h3>
+      <div *ngIf="category.visible">
+        <div *ngFor="let product of appData.products">
+          <div *ngIf="product.category === category.id">
+            <div className="card mb-2">
+            <app-product-card [product]="product"></app-product-card>
+        </div>
+          </div>
+        </div>
+      </div>
+      <!--<mat-divider></mat-divider>-->
+    </mat-list>
+  </mat-card-content>
+</mat-card>

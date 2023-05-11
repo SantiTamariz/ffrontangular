@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  cart: any[]=[];
+  products: any[]=[];
+  categories: any[]=[];
+
   title = 'ffrontangular';
 }
