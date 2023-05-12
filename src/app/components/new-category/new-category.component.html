@@ -1,3 +1,19 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
-
-<p>new-category works!</p>
+<mat-dialog-content>
+<div class="container">
+    <h1>Create category</h1>
+  
+    <form>
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input type="text" matInput placeholder="Nombre de categoría" [(ngModel)]="newCategoryName" name="name">
+        <mat-error>Name can't be null</mat-error>
+      </mat-form-field>
+    </form>
+  
+    <div class="buttons">
+      <button mat-stroked-button (click)="onClose()">Close</button>
+      <button mat-flat-button color="primary" (click)="onSave()">Create</button>
+    </div>
+  </div>  
+</mat-dialog-content>

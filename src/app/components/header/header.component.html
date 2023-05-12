@@ -1,24 +1,29 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
 
-<header class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">My Online Store</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Categories</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand">My Online Store</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          <li class="nav-item button-margin">
+            <button mat-button class="btn btn-primary" (click)="showNewCategory()">New Category</button>
         </li>
         <li class="nav-item button-margin">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-product-modal" id="new-product" (click)="showNewProduct()">New Product</button>
+          <button mat-button class="btn btn-primary" (click)="showNewProduct()">New Product</button>
         </li>
-        <li class="nav-item button-margin">
-          <button mat-button class="btn btn-primary" data-toggle="modal" data-target="#new-category-modal" id="new-category" (click)="showNewCategory()">New Category</button>
-        </li>
-      </ul>
-    </div>
+        </ul>
+      </div>
+    </nav>
 </header>

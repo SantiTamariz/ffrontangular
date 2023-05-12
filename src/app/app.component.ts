@@ -73,9 +73,6 @@ export class AppComponent {
   }
 
   handlePlaceOrder() {
-    this.cart.forEach(element => {
-      this.removeFromCart(element);
-    });
     this.cart = [];
     this.total = 0;
   }
@@ -96,5 +93,9 @@ export class AppComponent {
         total + product.price * product.quantity,
       0
     );
+  }
+
+  handleNewCategory(category: any){
+    this.categories.push(category);
   }
 }

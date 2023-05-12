@@ -1,24 +1,27 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
-<div class="card">
-  <div class="card-header">
-    <div class="card-title">
-      Categories
-    </div>
-  </div>
-  <div *ngIf="categories" class="card-body">
-    <ul *ngFor="let category of categories" class="list-group category-list">
-      <li class="list-group-item">
-        <h3 (click)="toggleCategory(category)" class="category-link">{{ category.name }}</h3>
-        <div *ngIf="category.visible">
-          <div *ngFor="let product of products">
-            <div *ngIf="product.category === category.id">
-              <div class="card mb-2">
-                <app-product-card [product]="product" (addToCart)="handleAddToCart($event)"></app-product-card>
-              </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+<div class="big">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                Categories
             </div>
-          </div>
         </div>
-      </li>
-    </ul>
-  </div>
+        <div *ngIf="categories" class="card-body">
+            <ul *ngFor="let category of categories" class="list-group category-list">
+                <li class="list-group-item">
+                    <h3 (click)="toggleCategory(category)" class="category-link">{{ category.name }}</h3>
+                    <div *ngIf="category.visible">
+                        <div *ngFor="let product of products">
+                            <div *ngIf="product.category === category.id">
+                                <div class="card mb-2">
+                                    <app-product-card [product]="product"
+                                        (addToCart)="handleAddToCart($event)"></app-product-card>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
