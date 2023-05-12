@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NewCategoryComponent } from '../new-category/new-category.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-header',

@@ -18,8 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatOptionModule, MatPaginatorModule, MatSelectModule, MatTableModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-
-
+import { MaterialModule } from './material/material/material.module';
 
 @NgModule({
   declarations: [
@@ -52,6 +51,7 @@ import { CommonModule } from '@angular/common';
     MatPaginatorModule,
     MatOptionModule,
     MatSelectModule,
+    MaterialModule
   ],  
   providers: [],
   bootstrap: [AppComponent],

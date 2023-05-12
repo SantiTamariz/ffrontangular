@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Optional, Output } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -12,7 +12,7 @@ export class NewCategoryComponent implements OnInit {
   @Output() handleNewCategory: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(public dialogRef: MatDialogRef<NewCategoryComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:any[]) { }
+    @Optional() @Inject(MAT_DIALOG_DATA) public data:any[]) { }
 
   ngOnInit(): void {
     console.log("New Category Component is now available");
